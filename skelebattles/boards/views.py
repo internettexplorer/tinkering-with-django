@@ -1,10 +1,13 @@
 from django.shortcuts import render
 
-# Create your views here.
 from django.http import HttpResponse
+from .models import Board
 
 # Create a view named 'home' which returns a
 # http response after receiving a request
 def home(request):
-    return HttpResponse('Hello, World!')
+    boards = Board.objects.all()
+    return render(request, 'home.html', {'boards': boards})
+
+#
 
